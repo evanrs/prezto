@@ -10,4 +10,75 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+#
+# My stuffs (^.^)
+#
+
+function killpattern() {
+    ps aux | grep $1 | awk 'NR >= 2 {print $2}' | xargs kill -9
+}
+
+function killport() {
+    lsof -n -i4TCP:$1 | awk 'NR >= 2 {print $2}' | xargs kill -9
+}
+
+function portto(){
+    sudo ipfw add 100 fwd 127.0.0.1,$2 tcp from any to any $1 in
+}
+
+gothink(){
+    cd ~/Thinkful/pysplash
+    source ../venv/bin/activate
+    source ../environment/env-vars.sh
+    if [ $1 ]
+    then
+        cd $1
+    fi
+}
+think(){
+    gothink $1
+    if [ $1 ] && [ "$1" != "" ]
+    then
+        open pysplash-$1.sublime-project
+        echo "opening pysplash-$1"
+    else
+        echo "opening pysplash"
+        open pysplash.sublime-project
+    fi
+}
+runthought(){
+    gothink
+    echo -e '\033kpysplash:server\033\\'
+    python -B webstart.py
+}
+
+#
+# Node
+#
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+export NODE_PATH=$(which node)
+
+# source $(brew --prefix nvm)/nvm.sh
+# export NVM_DIR=~/.nvm
+# export NODE_PATH=$NODE_PATH:/usr/local/lib/node_modules
+# nvm use default
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+export PHANTOMJS_BIN=`which phantomjs`
+
+export PYTHONPATH='/usr/local/Cellar/python/2.7.9'
+
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
+
+export ANDROID_HOME=/usr/local/opt/android-sdk
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+# eval "$(rbenv init -)"
+
+source /usr/local/opt/autoenv/activate.sh
+eval $(thefuck --alias)
