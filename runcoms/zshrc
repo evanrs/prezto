@@ -49,3 +49,20 @@ export ANDROID_HOME=/usr/local/opt/android-sdk
 # source /usr/local/opt/autoenv/activate.sh
 
 eval $(thefuck --alias)
+
+
+#
+# ███████  █████   ██████  ███████
+# ██      ██   ██ ██       ██
+# ███████ ███████ ██   ███ █████
+#      ██ ██   ██ ██    ██ ██
+# ███████ ██   ██  ██████  ███████
+#
+
+# Best to force this global default
+export DATABAGS_ENV='local'
+
+# for local environments, this will be used as the sole email account.
+# This is so local environments don't spam other people
+# You can then filter these emails if you want with the gmail filter "to: evan+local@sageproject.com"
+export SAGE_ADMIN_EMAIL="evan+local@sageproject.com"
