@@ -28,7 +28,7 @@ function portto(){
 
 # Node, NVM
 export NVM_DIR="$HOME/.nvm"
-. "/usr/local/opt/nvm/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 export NODE_PATH=$(which node)
 export PHANTOMJS_BIN=`which phantomjs`
 
@@ -66,3 +66,7 @@ export DATABAGS_ENV='local'
 # This is so local environments don't spam other people
 # You can then filter these emails if you want with the gmail filter "to: evan+local@sageproject.com"
 export SAGE_ADMIN_EMAIL="evan+local@sageproject.com"
+
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /Users/evan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/evan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
