@@ -11,8 +11,8 @@
 #
 
 HISTFILE="${ZDOTDIR:-$HOME}/.zhistory"       # The path to the history file.
-HISTSIZE=262144                  # The maximum number of events to save in the internal history.
-SAVEHIST=262144                  # The maximum number of events to save in the history file.
+HISTSIZE=5262144                  # The maximum number of events to save in the internal history.
+SAVEHIST=5262144                  # The maximum number of events to save in the history file.
 
 #
 # Options
