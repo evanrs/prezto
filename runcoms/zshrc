@@ -78,3 +78,5 @@ export SAGE_ADMIN_EMAIL="evan+local@sageproject.com"
 autoload -Uz promptinit
 promptinit
 prompt pure
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
