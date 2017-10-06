@@ -26,6 +26,13 @@ function portto(){
     sudo ipfw add 100 fwd 127.0.0.1,$2 tcp from any to any $1 in
 }
 
+function tolowerecase(){
+    find . -depth -exec sh -c '
+        t=${0%/*}/$(printf %s "${0##*/}" | tr "[:upper:]" "[:lower:]");
+        [ "$t" = "$0" ] || mv -i "$0" "$t"
+    ' {} \;
+}
+
 lazy_source () {
     eval "$1 () { [ -f $2 ] && source $2 && $1 \$@ }"
 }
