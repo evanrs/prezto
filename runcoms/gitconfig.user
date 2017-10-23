@@ -1,0 +1,7 @@
+[github]
+  user = evanrs
+[user]
+	name = Evan Schneider
+	email = me@evanrs.com
+[credential]
+	helper = osxkeychain
