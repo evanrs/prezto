@@ -92,4 +92,11 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
-[[ -f /Users/evan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/evan/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+[[ -f ~/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . ~/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+# tabtab source for serverless package
++# uninstall by removing these lines or running `tabtab uninstall serverless`
++[[ -f ~/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /U
++# tabtab source for sls package
++# uninstall by removing these lines or running `tabtab uninstall sls`
++[[ -f ~/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/ev
