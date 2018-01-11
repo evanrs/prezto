@@ -10,10 +10,20 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-#
-# My stuffs (^.^)
-#
+##
+## Here be dragons
+##
+## (∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *
+##
 
+## Private
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/private/env" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/private/env"
+else
+  echo "Warning: private environment unavailable"
+fi
+
+## Some functions?
 function killpattern() {
     ps aux | grep $1 | awk 'NR >= 2 {print $2}' | xargs kill -9
 }
@@ -37,58 +47,44 @@ lazy_source () {
     eval "$1 () { [ -f $2 ] && source $2 && $1 \$@ }"
 }
 
-# Node, NVM
+## Node, NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 export NODE_PATH=$(which node)
 
-# Yarn static path, in place of $(yarn global bin)
+## Yarn static path, in place of $(yarn global bin)
 PATH="${PATH}:$HOME/.config/yarn/global/node_modules/.bin"
 PATH="${PATH}:$(yarn global bin)"
 
 
-# Python
+## Python
 export PYTHONPATH='/usr/local/Cellar/python/2.7.9'
 
-# Ruby
+## Ruby
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 # eval "$(rbenv init -)"
 
-# Android
+## Java
+export JAVA_HOME=`/usr/libexec/java_home -v 9`
+
+## Android
 export ANDROID_HOME=/usr/local/opt/android-sdk
 
-# Go
+## Go
 # export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
+## Autoenv
 # source /usr/local/opt/autoenv/activate.sh
 
+## thefuck
 eval $(thefuck --alias)
 
-
-#
-# ███████  █████   ██████  ███████
-# ██      ██   ██ ██       ██
-# ███████ ███████ ██   ███ █████
-#      ██ ██   ██ ██    ██ ██
-# ███████ ██   ██  ██████  ███████
-#
-
-# Best to force this global default
-export DATABAGS_ENV='local'
-
-# for local environments, this will be used as the sole email account.
-# This is so local environments don't spam other people
-# You can then filter these emails if you want with the gmail filter "to: evan+local@sageproject.com"
-export SAGE_ADMIN_EMAIL="evan+local@sageproject.com"
-
-
-autoload -Uz promptinit
-promptinit
-prompt pure
-
+## iterm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+##tabtab
 
 # tabtab source for yarn package
 # uninstall by removing these lines or running `tabtab uninstall yarn`
@@ -100,3 +96,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f ~/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . ~/.nvm/versions/node/v8.9.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+## prompt
+autoload -Uz promptinit
+promptinit
+prompt pure
