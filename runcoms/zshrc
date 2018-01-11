@@ -67,7 +67,7 @@ export PATH=$GEM_HOME/bin:$PATH
 # eval "$(rbenv init -)"
 
 ## Java
-export JAVA_HOME=`/usr/libexec/java_home -v 9`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 ## Android
 export ANDROID_HOME=/usr/local/opt/android-sdk
